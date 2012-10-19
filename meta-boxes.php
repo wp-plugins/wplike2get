@@ -27,6 +27,12 @@
         /* Add the 'Support' meta box. */
         add_meta_box('wplike2get-support', __('Support', 'wplike2get'), 'wplike2get_meta_box_display_support', $wplike2get->settings_page, 'side', 'low');
 
+	    /**
+	     * @since 1.2.2
+	     */
+	    /* Add the 'Wishlist' meta box. */
+        add_meta_box('wplike2get-wishlist', __('Wishlist', 'wplike2get'), 'wplike2get_meta_box_display_wishlist', $wplike2get->settings_page, 'side', 'low');
+
         /* Add the 'Support' meta box. */
         add_meta_box('wplike2get-general', __('General', 'wplike2get'), 'wplike2get_meta_box_display_general', $wplike2get->settings_page, 'normal', 'high');
 
@@ -102,8 +108,20 @@
     <p>
         <?php printf(__('Support for this plugin is provided via the support forums at %1$s. If you need any help using it, please ask your support questions there.', 'wplike2get'), '<a href="http://wordpress.org/tags/wplike2get" title="' . __('wpLike2Get Support Forums', 'wplike2get') . '">' . __('wpLike2Get', 'wplike2get') . '</a>'); ?>
     </p>
-    <?php
+	<?php
     }
+
+	/**
+	 * Displays the support meta box.
+	 *
+	 * @since 1.2.2
+	 */
+	function wplike2get_meta_box_display_wishlist($object, $box)
+	{
+	    ?>
+		<SCRIPT charset="utf-8" type="text/javascript" src="http://ws.amazon.de/widgets/q?ServiceVersion=20070822&MarketPlace=DE&ID=V20070822/DE/drumbadebrauc-21/8004/c3b192dc-0fab-41f9-837e-91fb908a1151"> </SCRIPT> <NOSCRIPT><A HREF="http://ws.amazon.de/widgets/q?ServiceVersion=20070822&MarketPlace=DE&ID=V20070822%2FDE%2Fdrumbadebrauc-21%2F8004%2Fc3b192dc-0fab-41f9-837e-91fb908a1151&Operation=NoScript">Amazon.de Widgets</A></NOSCRIPT>
+		<?php
+	}
 
     /**
      * Display the general meta box
@@ -174,10 +192,21 @@
         </tr>
         <tr>
             <th>
+                <label for="l2g_single_activation"><?php _e('Show on single only', 'wplike2get') ?></label>
+            </th>
+            <td>
+	            <input type="checkbox" name="wplike2get_settings[l2g_single_activation]" id="l2g_single_activation"
+	                                   value="1"<?php checked(wplike2get_get_setting('l2g_single_activation'), 1) ?>/>
+                <label class="description"
+                       for="l2g_single_activation"><?php _e('Show the Button(s) only on single views, not on home, or archive pages', 'wplike2get') ?></label>
+            </td>
+        </tr>
+        <tr>
+            <th>
                 <label for="l2g_show_plugin_link"><?php _e('Give love to the Developer', 'wplike2get') ?></label>
             </th>
             <td>
-                <input type="checkbox" name="wplike2get_settings[]l2g_show_plugin_link" id="l2g_show_plugin_link"
+                <input type="checkbox" name="wplike2get_settings[l2g_show_plugin_link]" id="l2g_show_plugin_link"
                        value="1"<?php checked(wplike2get_get_setting('l2g_show_plugin_link'), 1) ?>/>
                 <label class="description"
                        for="l2g_show_plugin_link"><?php printf(__('show a small link to the <a href="%s">wpLike2Get Plugin page</a>', 'wplike2get'), 'http://markusdrubba.de/wordpress/wplike2get/#utm_source=wpadmin&utm_medium=settingslink&utm_term=link&utm_campaign=wplike2getplugin') ?></label>
@@ -291,6 +320,14 @@
                         </td>
                     </tr>
                     <tr>
+                        <th>
+                            <input type="text" class="small-text" name="wplike2get_settings[fb_lang]" id="fb_lang" value="<?php echo wplike2get_get_setting( 'fb_lang' ) ?>">
+                        </th>
+                        <td>
+                            <label class="description" for="fb_lang"><?php _e( 'Set language (en_US, en_GB, de_DE, es_ES, fr_FR ...)', 'wplike2get' ) ?></label>
+                        </td>
+                    </tr>
+                    <tr>
                         <th><input type="checkbox" name="wplike2get_settings[fb_send]" id="fb_send"
                                    value="1"<?php checked(wplike2get_get_setting('fb_send'), 1) ?>></th>
                         <td><label class="description"
@@ -349,13 +386,12 @@
         <tr>
             <th>
                 <label for="fb_ga"><?php _e('Google Analytics Tracking', 'wplike2get') ?></label>
-
-                <p class="description"><?php _e('Be sure to have a working Google Analytics-Code on your page', 'wplike2get') ?></p>
             </th>
             <td class="child-table">
                 <table class="form-child-table">
                     <tr>
-                        <th><input type="checkbox" name="wplike2get_settings[fb_ga]" id="fb_ga"
+                        <th>
+	                        <input type="checkbox" name="wplike2get_settings[fb_ga]" id="fb_ga"
                                    value="1"<?php checked(wplike2get_get_setting('fb_ga'), 1) ?>></th>
                         <td><label class="description"
                                    for="fb_ga"><?php _e('Track likes with Google Analytics', 'wplike2get') ?></label>
@@ -372,6 +408,9 @@
                                    for="fb_ga_version"><?php _e('Decide between old and new Tracking-Version', 'wplike2get') ?></label>
                         </td>
                     </tr>
+	                <tr>
+		                <td colspan="2"><p class="description"><?php _e('Be sure to have a working Google Analytics-Code on your page', 'wplike2get') ?></p></td>
+	                </tr>
                 </table>
             </td>
         </tr>
@@ -515,8 +554,6 @@
         <tr>
             <th>
                 <label for="fb_ga"><?php _e('Google Analytics Tracking', 'wplike2get') ?></label>
-
-                <p class="description"><?php _e('Be sure to have a working Google Analytics-Code on your page', 'wplike2get') ?></p>
             </th>
             <td class="child-table">
                 <table class="form-child-table">
@@ -538,6 +575,9 @@
                                    for="tw_ga_version"><?php _e('Decide between old and new Tracking-Version', 'wplike2get') ?></label>
                         </td>
                     </tr>
+	                <tr>
+		                <td colspan="2"><p class="description"><?php _e('Be sure to have a working Google Analytics-Code on your page', 'wplike2get') ?></p></td>
+	                </tr>
                 </table>
             </td>
         </tr>
@@ -611,8 +651,6 @@
         <tr>
             <th>
                 <label for="fb_ga"><?php _e('Google Analytics Tracking', 'wplike2get') ?></label>
-
-                <p class="description"><?php _e('Be sure to have a working Google Analytics-Code on your page', 'wplike2get') ?></p>
             </th>
             <td class="child-table">
                 <table class="form-child-table">
@@ -634,6 +672,9 @@
                                    for="gp_ga_version"><?php _e('Decide between old and new Tracking-Version', 'wplike2get') ?></label>
                         </td>
                     </tr>
+	                <tr>
+		                <td colspan="2"><p class="description"><?php _e('Be sure to have a working Google Analytics-Code on your page', 'wplike2get') ?></p></td>
+	                </tr>
                 </table>
             </td>
         </tr>

@@ -1,22 +1,40 @@
 <?php
     /**
      * Plugin Name: wpLike2Get
-     * Version: 1.2.1
+     * Version: 1.2.2
      * Plugin URI: http://markusdrubba.de/wordpress/wplike2get/#utm_source=wpadmin&utm_medium=plugin&utm_campaign=wplike2getplugin
      * Description: The first true social media download-protection solution for WordPress. Hide downloads until user like, tweet or +1 your content.
      * Author: Markus Drubba
      * Author URI: http://markusdrubba.de
      * Text Domain: wpl2g
      * Domain Path: /languages
+     * License: GPL v3
      *
-     * @package WpLike2Get
-     * @version 1.2.1
-     * @author Markus Drubba <markus@markusdrubba.de>
+     * wpLike2Get
+     * Copyright (C) 2008-2012, Markus Drubba
+     *
+     * This program is free software: you can redistribute it and/or modify
+     * it under the terms of the GNU General Public License as published by
+     * the Free Software Foundation, either version 3 of the License, or
+     * (at your option) any later version.
+     *
+     * This program is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     * GNU General Public License for more details.
+     *
+     * You should have received a copy of the GNU General Public License
+     * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+     *
+     *
+     * @package   WpLike2Get
+     * @version   1.2.2
+     * @author    Markus Drubba <markus@markusdrubba.de>
      * @copyright Copyright (c) 2008 - 2012, Markus Drubba
-     * @link http://markusdrubba.de/wordpress/wplike2get
+     * @link      http://markusdrubba.de/wordpress/wplike2get
      */
 
-    /* Set up the plugin on the 'plugins_loaded' hook. */
+/* Set up the plugin on the 'plugins_loaded' hook. */
     add_action('plugins_loaded', 'wplike2get_setup');
 
     /* Upgrade plugin. */
@@ -254,36 +272,57 @@
             "name" => wplike2get_get_setting('l2g_link_identifier'),
             "twitter" => wplike2get_get_setting('tw_activated'),
             "facebook" => wplike2get_get_setting('fb_activated'),
-            "gplusone" => wplike2get_get_setting('gp_activated')
+            "gplusone" => wplike2get_get_setting('gp_activated'),
+	        "single"  => wplike2get_get_setting('l2g_single_activation'), // @since 1.2.2
+	        "home_text" => '' // @since 1.2.2
         ), $atts));
 
         $return = '';
-        if (wplike2get_is_true($twitter) || wplike2get_is_true($facebook) || wplike2get_is_true($gplusone)) {
-            if(empty($content))
-                $return .= '<div id="l2g-download-link" style="display:none;"><a>' . $name . '</a>';
+	    $show = true;
 
-            if (wplike2get_get_setting('l2g_show_plugin_link')) $return .= '<span class="l2g-plugin-link"><a href="http://markusdrubba.de/wordpress/wplike2get/#utm_source=wpfrontend&utm_medium=pluginlink&utm_term=link&utm_campaign=wplike2getplugin">wpLike2Get</a></span>';
+	    /**
+		 * @since 1.2.2
+	     *
+	     * check if single_activation is true and current view is not singular
+	     */
+	    if( wplike2get_is_true( $single ) ) {
 
-            if(empty($content))
-                $return .= '</div>';
+		    if( ! is_singular() ) {
+			    $show = false;
+		    }
 
-            $return .= '<div id="l2g" class="attachment-' . $id . '">';
-            if (wplike2get_is_true($facebook)) {
-                $return .= '<div class="facebook"></div>';
-            }
-            if (wplike2get_is_true($twitter)) {
-                $return .= '<div class="twitter"></div>';
-            }
-            if (wplike2get_is_true($gplusone)) {
-                $return .= '<div class="gplusone"></div>';
-            }
-            $return .= '<br/>';
-        }
-        if (wplike2get_is_true($twitter) || wplike2get_is_true($facebook) || wplike2get_is_true($gplusone)) {
-            $return .= '</div>';
-        }
+	    }
 
-        $return .= '<div class="l2g-hidden-content" style="display: none">'.do_shortcode($content).'</div>';
+	    if( $show ) {
+	        if (wplike2get_is_true($twitter) || wplike2get_is_true($facebook) || wplike2get_is_true($gplusone)) {
+	            if(empty($content))
+	                $return .= '<div id="l2g-download-link" style="display:none;"><a>' . $name . '</a>';
+
+	            if (wplike2get_get_setting('l2g_show_plugin_link')) $return .= '<span class="l2g-plugin-link"><a href="http://markusdrubba.de/wordpress/wplike2get/#utm_source=wpfrontend&utm_medium=pluginlink&utm_term=link&utm_campaign=wplike2getplugin">wpLike2Get</a></span>';
+
+	            if(empty($content))
+	                $return .= '</div>';
+
+	            $return .= '<div id="l2g" class="attachment-' . $id . '">';
+	            if (wplike2get_is_true($facebook)) {
+	                $return .= '<div class="facebook"></div>';
+	            }
+	            if (wplike2get_is_true($twitter)) {
+	                $return .= '<div class="twitter"></div>';
+	            }
+	            if (wplike2get_is_true($gplusone)) {
+	                $return .= '<div class="gplusone"></div>';
+	            }
+	            $return .= '<br/>';
+	        }
+	        if (wplike2get_is_true($twitter) || wplike2get_is_true($facebook) || wplike2get_is_true($gplusone)) {
+	            $return .= '</div>';
+	        }
+
+	        $return .= '<div class="l2g-hidden-content" style="display: none">'.do_shortcode($content).'</div>';
+	    } else {
+		    $return .= $home_text;
+	    }
 
         return $return;
     }
