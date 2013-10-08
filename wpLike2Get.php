@@ -1,7 +1,7 @@
 <?php
     /**
      * Plugin Name: wpLike2Get
-     * Version: 1.2.3
+     * Version: 1.2.4
      * Plugin URI: http://markusdrubba.de/wordpress/wplike2get/#utm_source=wpadmin&utm_medium=plugin&utm_campaign=wplike2getplugin
      * Description: The first true social media download-protection solution for WordPress. Hide downloads until user like, tweet or +1 your content.
      * Author: Markus Drubba
@@ -11,7 +11,7 @@
      * License: GPL v3
      *
      * wpLike2Get
-     * Copyright (C) 2008-2012, Markus Drubba
+     * Copyright (C) 2008-2013, Markus Drubba
      *
      * This program is free software: you can redistribute it and/or modify
      * it under the terms of the GNU General Public License as published by
@@ -28,13 +28,16 @@
      *
      *
      * @package   WpLike2Get
-     * @version   1.2.3
+     * @version   1.2.4
      * @author    Markus Drubba <markus@markusdrubba.de>
-     * @copyright Copyright (c) 2008 - 2012, Markus Drubba
+     * @copyright Copyright (c) 2008 - 2013, Markus Drubba
      * @link      http://markusdrubba.de/wordpress/wplike2get
      */
 
-/* Set up the plugin on the 'plugins_loaded' hook. */
+    /* Defining $wpLike2Get as stdClass() Object because a warning is generated since php 5.4 if not */
+    $wplike2get = new stdClass();
+
+    /* Set up the plugin on the 'plugins_loaded' hook. */
     add_action('plugins_loaded', 'wplike2get_setup');
 
     /* Upgrade plugin. */
@@ -60,7 +63,7 @@
         define('WPLIKE2GET_URI', trailingslashit(plugin_dir_url(__FILE__)));
 
         /* Define the plugin version. */
-        define('WPLIKE2GET_VERSION', '1.2.3');
+        define('WPLIKE2GET_VERSION', '1.2.4');
 
         /* if both logged in and not logged in users can send this AJAX request, add both of these actions, otherwise add only the appropriate one */
         add_action('wp_ajax_nopriv_l2g-get-download-link', 'wplike2get_get_download_link');
@@ -115,10 +118,12 @@
         if (!$option)
             return false;
 
-        if (!isset($wplike2get->settings) || !is_array($wplike2get->settings))
+        if (!isset($wplike2get->settings) || !is_array($wplike2get->settings)){
+	        $wplike2get->settings = new stdClass();
             $wplike2get->settings = get_option('wplike2get_settings');
+        }
 
-        return $wplike2get->settings[$option];
+        return isset( $wplike2get->settings[$option] ) ? $wplike2get->settings[$option] : false;
     }
 
     /**
@@ -153,7 +158,7 @@
         $upgrade = false;
         $pluginpath = wplike2get_get_setting('plugin_path');
         $old_option = get_option('l2g_options');
-        if(!empty($pluginpath) || !empty($old_option)) { // the plugin is already in use
+        if($pluginpath || !empty($old_option)) { // the plugin is already in use
             $userversion = wplike2get_get_setting('version');
             if (empty($userversion)) $userversion = '1.0.0';
             if (-1 == version_compare(wplike2get_get_setting('version'), '1.1.0')) {
