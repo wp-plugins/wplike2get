@@ -1,4 +1,4 @@
-/*
+_gaq/*
 	jquery.twitterbutton.js - http://socialmediaautomat.com/jquery-twitterbutton-js.php
 	Copyright (c) 2011 Stephan Helbig
 	This plugin available for use in all personal or commercial projects under both MIT and GPL licenses.
@@ -49,9 +49,9 @@ $.fn.twitterbutton = function(options) {
 					var label = intent_event.region;
 				  if(o.googleanalytics){
 						if(o.googleanalytics_obj!='_gaq'){
-							_gaq.push(['_trackEvent', 'twitter_web_intents', intent_event.type, label]);
+							pageTracker._trackEvent('twitter', intent_event.type, label);
 						} else {
-							pageTracker._trackEvent('twitter_web_intents', intent_event.type, label);
+							_gaq.push(['_trackEvent', 'twitter', intent_event.type, label]);
 						}
 					}
 			  };      
@@ -61,9 +61,9 @@ $.fn.twitterbutton = function(options) {
 					var label = intent_event.data.tweet_id;
 				  if(o.googleanalytics){
 						if(o.googleanalytics_obj!='_gaq'){
-							_gaq.push(['_trackEvent', 'twitter_web_intents', intent_event.type, label]);
+							pageTracker._trackEvent('twitter', intent_event.type, label);
 						} else {
-							pageTracker._trackEvent('twitter_web_intents', intent_event.type, label);
+							_gaq.push(['_trackEvent', 'twitter', intent_event.type, label]);
 						}
 					}
 			 		o.ontweet.call(intent_event);
@@ -78,9 +78,9 @@ $.fn.twitterbutton = function(options) {
 					var label = intent_event.data.source_tweet_id;
 				  if(o.googleanalytics){
 						if(o.googleanalytics_obj!='_gaq'){
-							_gaq.push(['_trackEvent', 'twitter_web_intents', intent_event.type, label]);
+							pageTracker._trackEvent('twitter', intent_event.type, label);
 						} else {
-							pageTracker._trackEvent('twitter_web_intents', intent_event.type, label);
+							_gaq.push(['_trackEvent', 'twitter', intent_event.type, label]);
 						}
 					}
 			 		o.onretweet.call(intent_event);
@@ -92,9 +92,9 @@ $.fn.twitterbutton = function(options) {
 					var label = intent_event.data.user_id + " (" + intent_event.data.screen_name + ")";
 				  if(o.googleanalytics){
 						if(o.googleanalytics_obj!='_gaq'){
-							_gaq.push(['_trackEvent', 'twitter_web_intents', intent_event.type, label]);
+							pageTracker._trackEvent('twitter', intent_event.type, label);
 						} else {
-							pageTracker._trackEvent('twitter_web_intents', intent_event.type, label);
+							_gaq.push(['_trackEvent', 'twitter', intent_event.type, label]);
 						}
 					}
 			 		o.onfollow.call(intent_event);

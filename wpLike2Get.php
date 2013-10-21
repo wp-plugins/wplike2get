@@ -1,7 +1,7 @@
 <?php
     /**
      * Plugin Name: wpLike2Get
-     * Version: 1.2.4
+     * Version: 1.2.5
      * Plugin URI: http://markusdrubba.de/wordpress/wplike2get/#utm_source=wpadmin&utm_medium=plugin&utm_campaign=wplike2getplugin
      * Description: The first true social media download-protection solution for WordPress. Hide downloads until user like, tweet or +1 your content.
      * Author: Markus Drubba
@@ -28,7 +28,7 @@
      *
      *
      * @package   WpLike2Get
-     * @version   1.2.4
+     * @version   1.2.5
      * @author    Markus Drubba <markus@markusdrubba.de>
      * @copyright Copyright (c) 2008 - 2013, Markus Drubba
      * @link      http://markusdrubba.de/wordpress/wplike2get
@@ -63,7 +63,7 @@
         define('WPLIKE2GET_URI', trailingslashit(plugin_dir_url(__FILE__)));
 
         /* Define the plugin version. */
-        define('WPLIKE2GET_VERSION', '1.2.4');
+        define('WPLIKE2GET_VERSION', '1.2.5');
 
         /* if both logged in and not logged in users can send this AJAX request, add both of these actions, otherwise add only the appropriate one */
         add_action('wp_ajax_nopriv_l2g-get-download-link', 'wplike2get_get_download_link');
