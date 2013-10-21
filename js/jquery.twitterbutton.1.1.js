@@ -1,4 +1,4 @@
-_gaq/*
+/*
 	jquery.twitterbutton.js - http://socialmediaautomat.com/jquery-twitterbutton-js.php
 	Copyright (c) 2011 Stephan Helbig
 	This plugin available for use in all personal or commercial projects under both MIT and GPL licenses.
