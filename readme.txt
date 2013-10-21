@@ -61,6 +61,9 @@ Use the following options in the shortcode: facebook="false", twitter="false" or
 
 == Changelog ==
 
+= 1.2.6 | 21.10.2013 =
+* fixed a copy & paste bug. sorry!
+
 = 1.2.5 | 21.10.2013 =
 * fixed a bug, where google analytics tracking for twitter is not working
 
