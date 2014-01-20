@@ -61,6 +61,10 @@ Use the following options in the shortcode: facebook="false", twitter="false" or
 
 == Changelog ==
 
+= 1.2.7 | 20.01.2014 =
+* adding google analytics universal tracking
+* remove the option where you can select your google analytics version. Most of you don't know the version, it is detected automatically now
+
 = 1.2.6 | 21.10.2013 =
 * fixed a copy & paste bug. sorry!
 

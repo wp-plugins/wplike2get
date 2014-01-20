@@ -18,3 +18,7 @@ l2g-download-link {
     width: 150px;
     text-align: center;
 }
+
+#l2g iframe {
+    max-width: none;
+}
