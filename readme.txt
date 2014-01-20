@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Pay with tweet, Pay per tweet, like 2 get, Facebook, Twitter, Google+, Google Plus, Markus Drubba, drumba, social network, social media
 Requires at least: 3.1
 Tested up to: 3.6.1
-Stable tag: "1.2.5"
+Stable tag: "1.2.7"
 License: GPLv3
 
 Improve your social media spreading by letting your users pay with a like, a tweet or +1. wpLike2Get allows you to do this easily.
@@ -60,6 +60,10 @@ Yes, since version 1.2.0 you can also hide content before user like your post/pa
 Use the following options in the shortcode: facebook="false", twitter="false" or gplusone="false"
 
 == Changelog ==
+
+= 1.2.7 | 20.01.2014 =
+* adding google analytics universal tracking
+* remove the option where you can select your google analytics version. Most of you don't know the version, it is detected automatically now
 
 = 1.2.6 | 21.10.2013 =
 * fixed a copy & paste bug. sorry!

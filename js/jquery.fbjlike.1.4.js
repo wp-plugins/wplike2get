@@ -30,7 +30,6 @@
 			lang               :'en_US',
 			hideafterlike      :false,
 			googleanalytics    :false, //true|false
-			googleanalytics_obj:'pageTracker', //pageTracker|_gaq
 			onlike             :function () {
 				return true;
 			},
@@ -76,23 +75,28 @@
 				FB.init({appId:o.appID, status:true, cookie:true, xfbml:true});
 				FB.Event.subscribe('edge.create', function (response) {
 					if (o.hideafterlike)$(obj).hide();
+
 					if (o.googleanalytics) {
-						if (o.googleanalytics_obj != '_gaq') {
-							pageTracker._trackEvent('facebook', 'liked', dynTitle);
-						} else {
-							_gaq.push(['_trackEvent', 'facebook', 'liked', dynTitle]);
-						}
+						if (typeof pageTracker != 'undefined')
+							pageTracker._trackEvent('facebook', 'liked', document.location);
+						if (typeof _gaq != 'undefined')
+							_gaq.push(['_trackEvent', 'facebook', 'liked', document.location]);
+						if (typeof ga != 'undefined')
+							ga('send', 'event', 'facebook', 'liked', document.location);
 					}
+
 					o.onlike.call(response);
 				});
 				FB.Event.subscribe('edge.remove', function (response) {
 					if (o.googleanalytics) {
-						if (o.googleanalytics_obj != '_gaq') {
-							pageTracker._trackEvent('facebook', 'unliked', dynTitle);
-						} else {
-							_gaq.push(['_trackEvent', 'facebook', 'unliked', dynTitle]);
-						}
+						if (typeof pageTracker != 'undefined')
+							pageTracker._trackEvent('facebook', 'unliked', document.location);
+						if (typeof _gaq != 'undefined')
+							_gaq.push(['_trackEvent', 'facebook', 'unliked', document.location]);
+						if (typeof ga != 'undefined')
+							ga('send', 'event', 'facebook', 'unliked', document.location);
 					}
+
 					o.onunlike.call(response);
 				});
 			};
