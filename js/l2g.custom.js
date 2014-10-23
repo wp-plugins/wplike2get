@@ -36,6 +36,7 @@ jQuery(document).ready(function ($) {
             appID:l2g_options.fb_appID,
             userID:l2g_options.fb_userID,
             siteName:l2g_options.fb_siteName,
+			href: $('#l2g .facebook').data('url') == undefined ? false : $('#l2g .facebook').data('url'),
             buttonWidth:l2g_options.fb_buttonWidth,
             buttonHeight:l2g_options.fb_buttonHeight,
             showfaces:Boolean(l2g_options.fb_showfaces),

@@ -53,16 +53,16 @@
         <p><strong><?php _e('Here\'s how you can give back:', 'wplike2get'); ?></strong></p>
         <ul>
             <li>
-                <a href="http://wordpress.org/extend/plugins/wplike2get/"><?php _e('Give the plugin a 5 ★ rating on WordPress.org', 'wplike2get'); ?></a>
+                <a href="https://wordpress.org/support/view/plugin-reviews/wplike2get"><?php _e('Give the plugin a 5 ★ rating on WordPress.org', 'wplike2get'); ?></a>
             </li>
             <li>
                 <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BCVM7FZ6ZCM2A"><?php _e('Donate a few dollars.', 'wplike2get'); ?></a>
             </li>
             <li>
-                <a href="http://wordpress.org/tags/wplike2get"><?php _e('Give feedback and improvement proposal', 'wplike2get'); ?></a>
+                <a href="https://wordpress.org/support/plugin/wplike2get"><?php _e('Give feedback and improvement proposal', 'wplike2get'); ?></a>
             </li>
             <li>
-                <a href="http://markusdrubba.de/wordpress/wplike2get/#utm_source=wpadmin&utm_medium=sidebanner&utm_term=link&utm_campaign=wplike2getplugin"><?php _e('Write a review and give a link to the plugin page', 'wplike2get'); ?></a>
+                <a href="http://markusdrubba.de/wordpress/wplike2get/"><?php _e('Write a review and give a link to the plugin page', 'wplike2get'); ?></a>
             </li>
         </ul>
     </div>

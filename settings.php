@@ -185,7 +185,7 @@
      * @since 1.1.0
      */
     function wplike2get_admin_enqueue_style() {
-    	wp_enqueue_style( 'wplike2get-admin', trailingslashit( WPLIKE2GET_URI ) . 'css/admin.css', false, 1.1, 'screen' );
+    	wp_enqueue_style( 'wplike2get-admin', trailingslashit( WPLIKE2GET_URI ) . 'css/admin.min.css', false, 1.8, 'screen' );
     }
 
     /**
