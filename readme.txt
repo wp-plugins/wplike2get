@@ -3,8 +3,8 @@ Contributors: drumba
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BCVM7FZ6ZCM2A
 Tags: Pay with tweet, Pay per tweet, like 2 get, Facebook, Twitter, Google+, Google Plus, Markus Drubba, drumba, social network, social media
 Requires at least: 3.1
-Tested up to: 3.6.1
-Stable tag: "1.2.5"
+Tested up to: 4.0
+Stable tag: "1.2.8"
 License: GPLv3
 
 Improve your social media spreading by letting your users pay with a like, a tweet or +1. wpLike2Get allows you to do this easily.
@@ -31,6 +31,10 @@ The social media buttons are loaded when the shortcode was detected. [l2g id="99
 * gplusone => true|false
 * single => true|false *if true show only on singular views (since v1.2.2)*
 * home_text => some text *only displayed when single is true (since v1.2.2)*
+* like_url => url for all activated social networks to like
+* facebook_url => add the url the user should like, will not detect likes from the past
+* twitter_url => add the url the user should tweet/follow, will not detect likes from the past
+* gplusone_url => add the url the user should plus, will not detect likes from the past
 
 == Installation ==
 
@@ -59,7 +63,19 @@ Yes, since version 1.2.0 you can also hide content before user like your post/pa
 = How can I hide a social network on only one specific post/page? =
 Use the following options in the shortcode: facebook="false", twitter="false" or gplusone="false"
 
+= How can I add the ability to like a facebook fanpage? =
+Add the attribute *like_url* to your shortcode and add the url to it. If you want to like different things for every social network, use *facebook_url*, *twitter_url* or *gplusone_url*.
+
 == Changelog ==
+
+= 1.2.8 | 23.10.2014 =
+* add the possibility to like any URL via custom shortcode (facebook_url, twitter_url, gplusone_url)
+* add spanish translation (thanks to Andrew Kurtis from webhostinghub.com for the translation)
+* minify and combine all javascript files for better performance
+
+= 1.2.7 | 20.01.2014 =
+* adding google analytics universal tracking
+* remove the option where you can select your google analytics version. Most of you don't know the version, it is detected automatically now
 
 = 1.2.6 | 21.10.2013 =
 * fixed a copy & paste bug. sorry!

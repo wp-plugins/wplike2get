@@ -99,7 +99,6 @@
             'fb_colorscheme' => 'light',
             'fb_hide' => false,
             'fb_ga' => false,
-            'fb_ga_version' => 'pageTracker',
 
             'tw_activated' => true,
             'tw_user' => false,
@@ -112,7 +111,6 @@
             'tw_lang' => 'en',
             'tw_hide' => false,
             'tw_ga' => false,
-            'tw_ga_version' => 'pageTracker',
 
             'gp_activated' => true,
             'gp_size' => 'tall',
@@ -120,9 +118,8 @@
             'gp_url' => false,
             'gp_lang' => 'en-US',
             'gp_hide' => false,
-            'gp_ga' => false,
-            'gp_ga_version' => 'pageTracker'
-        );
+            'gp_ga' => false
+	    );
     }
 
     /**
@@ -188,7 +185,7 @@
      * @since 1.1.0
      */
     function wplike2get_admin_enqueue_style() {
-    	wp_enqueue_style( 'wplike2get-admin', trailingslashit( WPLIKE2GET_URI ) . 'css/admin.css', false, 1.1, 'screen' );
+    	wp_enqueue_style( 'wplike2get-admin', trailingslashit( WPLIKE2GET_URI ) . 'css/admin.min.css', false, 1.8, 'screen' );
     }
 
     /**
