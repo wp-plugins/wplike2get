@@ -3,7 +3,7 @@ Contributors: drumba
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BCVM7FZ6ZCM2A
 Tags: Pay with tweet, Pay per tweet, like 2 get, Facebook, Twitter, Google+, Google Plus, Markus Drubba, drumba, social network, social media
 Requires at least: 3.1
-Tested up to: 4.0
+Tested up to: 4.1
 Stable tag: "1.2.8"
 License: GPLv3
 
