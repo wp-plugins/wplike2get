@@ -47,7 +47,7 @@
 				var e = document.createElement('script');
 				e.type = "text/javascript";
 				e.async = true;
-				e.src = 'http://platform.twitter.com/widgets.js';
+				e.src = '//platform.twitter.com/widgets.js';
 				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(e);
 
 				$(e).load(function () {
@@ -124,9 +124,9 @@
 				}
 				var counturl = '';
 				if (o.count_url != dynUrl)counturl = 'data-counturl="' + o.count_url + '" ';
-				var thtml = '<div><a href="http://twitter.com/share" class="twitter-share-button" data-url="' + dynUrl + '" ' + counturl + '' + via + 'data-text="' + dynTitle + '" data-lang="' + o.lang + '" ' + related + 'data-count="' + o.layout + '">Tweet</a></div>';
+				var thtml = '<div><a href="//twitter.com/share" class="twitter-share-button" data-url="' + dynUrl + '" ' + counturl + '' + via + 'data-text="' + dynTitle + '" data-lang="' + o.lang + '" ' + related + 'data-count="' + o.layout + '">Tweet</a></div>';
 			} else {
-				var thtml = '<div><a href="http://twitter.com/' + o.user + '" class="twitter-follow-button">Follow</a></div>';
+				var thtml = '<div><a href="//twitter.com/' + o.user + '" class="twitter-follow-button">Follow</a></div>';
 			}
 			if (o.mode == 'append')$(obj).append(thtml);
 			else $(obj).html(thtml);
