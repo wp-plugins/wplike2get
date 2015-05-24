@@ -3,8 +3,8 @@ Contributors: drumba
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BCVM7FZ6ZCM2A
 Tags: Pay with tweet, Pay per tweet, like 2 get, Facebook, Twitter, Google+, Google Plus, Markus Drubba, drumba, social network, social media
 Requires at least: 3.1
-Tested up to: 4.1
-Stable tag: "1.2.8"
+Tested up to: 4.2.2
+Stable tag: "1.2.9"
 License: GPLv3
 
 Improve your social media spreading by letting your users pay with a like, a tweet or +1. wpLike2Get allows you to do this easily.
@@ -67,6 +67,9 @@ Use the following options in the shortcode: facebook="false", twitter="false" or
 Add the attribute *like_url* to your shortcode and add the url to it. If you want to like different things for every social network, use *facebook_url*, *twitter_url* or *gplusone_url*.
 
 == Changelog ==
+
+= 1.2.9 | 24.05.2015 =
+* integrate twitter widget without fixed http:// schema, transform to // (thanks to @Ciprian)
 
 = 1.2.8 | 23.10.2014 =
 * add the possibility to like any URL via custom shortcode (facebook_url, twitter_url, gplusone_url)
